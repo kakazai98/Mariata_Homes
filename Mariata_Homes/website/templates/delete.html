@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Admin Panal</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+        '{%if message != None %}'
+           alert('{{ message }}');
+        '{%endif%}'
+    </script>
+    <style>
+    html, body {
+        width: 100%;
+        height: 100%;
+        font-family: "Georgia", sans-serif;
+        color: #444;
+        -webkit-font-smoothing: antialiased;
+        background: #9b9a9a;
+    }
+    /* Set the width of the side navigation to 250px */
+    .sidenav {
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #4c4f53;
+        overflow-x: hidden;
+        padding-top: 20px;
+    }
+
+    /* Style the side navigation links */
+    .sidenav a {
+        padding: 6px 8px 6px 16px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #f2f2f2;
+        display: block;
+    }
+
+    /* Change the color of the links on hover */
+    .sidenav a:hover {
+        background-color: #434daf;
+        color: rgb(247, 240, 240);
+    }
+
+    /* Add an active class to the active/current link */
+    .sidenav a.active {
+        background-color: #2d3585;
+        color: white;
+    }
+
+    /* Style the content */
+    .content {
+        margin-left: 250px;
+        padding-left: 20px;
+        height: 100%;
+    }
+
+    h1{
+        font-size: xx-large;
+        text-align: center;
+        margin-top: 20%;
+    }
+
+    p{
+        padding-left: 3%;
+    }
+
+    #container {
+        position: Relative;
+        width: 800px;
+        height: 180px;
+        margin: auto;
+        background: #fff;
+        border-radius: 3px;
+        border: 2px solid #969595;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+        overflow-x: auto;
+    }
+
+    ul  {
+        padding-left: 3%;
+        float: right;
+        width: 200px;   
+        height: 30px;
+    }
+    form {
+        width: 400px;
+        margin-left: 20px;
+        max-width: 90%;
+    }
+  
+  form label{
+    color: #b0bfd1;
+    display: flex;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+  
+  form input{
+    width: 85%;
+    padding: 7px;
+    border: none;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 6px;
+    outline: none;
+  } 
+  input[type="submit"] {
+    width: 95%;
+    height: 35px;
+    margin-top: 20px;
+    border: none;
+    background-color: #330b55;
+    color: white;
+    font-size: 18px;
+  }
+  .form-box {
+    width: 30%;
+    height: 15%;
+    margin: auto;
+    padding-bottom: 2%;
+    padding-top: 5px;
+    background-color: #20477a;
+    border-radius: 3px;
+  }
+  
+    </style>
+</head>
+
+<body>
+<div class="sidenav">
+    <a href="{% url 'admin' %}">All Applicants</a>  
+    <a href="{% url 'approve' %}">Approve Application</a>
+    <a href="{% url 'update' %}">Update Applicant Account</a>
+    <a class="active" href="">Delete Applicants</a>
+    <a href="{% url 'notification' %}">Send Notification</a>
+    <a href="{% url 'logout' %}">Logout</a>
+</div>
+<div class="form-box">
+<form method="POST" action="{% url 'delete' %}">
+    <div>
+     {{ form }}
+   </div> 
+    <input type="submit" value="Delete">
+</form>
+</div> 
+</html>
